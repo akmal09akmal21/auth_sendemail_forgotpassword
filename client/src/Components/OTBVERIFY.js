@@ -2,20 +2,21 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-const ForgotPassword = () => {
+const OTBVERIFY = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  //   const [otp, setOtp] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/auth/forgotpassword", {
+      .post("http://localhost:5000/reqotp", {
         email,
       })
       .then((res) => {
         console.log(res);
         alert(res.data.message);
-        navigate("/login");
+        navigate("/resetotp");
       })
       .catch((err) => {
         console.log(err.response.message);
@@ -39,4 +40,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default OTBVERIFY;

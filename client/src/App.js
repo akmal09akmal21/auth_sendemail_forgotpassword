@@ -6,6 +6,8 @@ import Home from "./Components/Home";
 import ForgotPassword from "./Components/ForgotPassword";
 import ResetPassword from "./Components/ResetPassword";
 import Dashboard from "./Components/Dashboard";
+// import OTBVERIFY from "./Components/OTBVERIFY";
+// import OTPresetpassword from "./Components/OTPresetpassword";
 function App() {
   return (
     <div className="App">
@@ -16,6 +18,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
+          {/* <Route path="/resetotp" element={<OTPresetpassword />} /> */}
           <Route path="/resetpassword/:token" element={<ResetPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>

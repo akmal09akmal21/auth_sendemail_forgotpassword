@@ -73,7 +73,7 @@ router.post("/forgotpassword", async (req, res) => {
       from: process.env.EMAILIM,
       to: email,
       subject: "Reset Password",
-      text: `http://localhost:3001/resetpassword/${encodedToken}`,
+      text: `http://localhost:3000/resetpassword/${encodedToken}`,
     };
 
     // Send the email
