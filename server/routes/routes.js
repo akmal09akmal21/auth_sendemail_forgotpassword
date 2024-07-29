@@ -64,13 +64,13 @@ router.post("/forgotpassword", async (req, res) => {
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "takmal819@gmail.com",
-        pass: "vocd rcpw okhs kcuh",
+        user: process.env.EMAILIM,
+        pass: process.env.GOOGLE_PASSWORD,
       },
     });
     const encodedToken = encodeURIComponent(token).replace(/\./g, "%2E");
     var mailOptions = {
-      from: "takmal819@gmail.com",
+      from: process.env.EMAILIM,
       to: email,
       subject: "Reset Password",
       text: `http://localhost:3001/resetpassword/${encodedToken}`,
@@ -115,25 +115,5 @@ router.get("/logout", (req, res) => {
     res.status(500).send({ success: false, message: "xatolik", error: error });
   }
 });
-// const verifyUser = async (req, res, next) => {
-//   try {
-//     const token = req.cookies.token;
-//     if (!token) {
-//       return res.status(400).send({ success: false, message: "no token" });
-//     }
-//     const decoded = await jwt.verify(token, process.env.KEY);
-//     next();
-//   } catch (error) {
-//     console.log(error);
-//     return res.status(500).send({
-//       success: false,
-//       message: "verifyuserdan xatolik",
-//       error: error,
-//     });
-//   }
-// };
-// router.get("/verify", verifyUser, (req, res) => {
-//   return res.status(200).json({ success: true, message: "authorized" });
-// });
 
 module.exports = router;
